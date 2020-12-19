@@ -1,5 +1,32 @@
-{% extends "base.html" %} {% block head %} {% endblock %} {% block title %}
+{% extends "base.html" %} {% block head %}
+
+<style>
+  .container-fluid {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #todo {
+    background-color: red;
+    padding: 2rem;
+  }
+</style>
+{% endblock %} {% block title %}
 <title>Home Page</title>
 {% endblock %} {% block body %}
-<h1>Your Todo List</h1>
+<div class="container-fluid">
+  <div id="todo">
+    <h1>Your Todo List</h1>
+  </div>
+</div>
+<script>
+  const bg = document.getElementsByTagName("body")[0];
+  bg.style.backgroundColor = "#3498DB";
+  setInterval(() => {
+    bg.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
+    bg.style.transition = "background 1.5s";
+  }, 2000);
+</script>
 {% endblock %}
