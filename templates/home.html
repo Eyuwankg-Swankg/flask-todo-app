@@ -1,6 +1,10 @@
 {% extends "base.html" %} {% block head %}
 
 <style>
+  html {
+    overflow-y: scroll;
+    padding-top: 5rem;
+  }
   body {
     font-size: 10px;
   }
@@ -55,14 +59,17 @@
         <button type="submit" class="btn btn-primary">Add</button>
       </div>
     </form>
+    {% for todo in todos %}
+    <h1>{{todo}}</h1>
+    {% endfor %}
   </div>
 </div>
 <script>
   const bg = document.getElementsByTagName("body")[0];
-  bg.style.backgroundColor = "#3498DB";
+  bg.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
   setInterval(() => {
     bg.style.backgroundColor = `#${Math.floor(Math.random() * 1000000)}`;
-    bg.style.transition = "background 1.5s";
-  }, 2000);
+    bg.style.transition = "background 2s";
+  }, 3000);
 </script>
 {% endblock %}
