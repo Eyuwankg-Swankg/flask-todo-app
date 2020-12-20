@@ -30,7 +30,7 @@ def home():
 def addTodo():
     todo = request.form["todo"]
     print(f"------------------------\n{todo}\n------------")
-    if len(todo) > 3:
+    if len(todo) > 1:
         todoOB = todos(todo)
         db.session.add(todoOB)
         db.session.commit()
