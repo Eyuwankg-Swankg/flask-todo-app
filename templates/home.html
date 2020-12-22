@@ -40,6 +40,14 @@
     justify-content: space-between;
     align-items: center;
   }
+  #todoContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #todoContainer p {
+    font-size: 2rem;
+  }
 </style>
 {% endblock %} {% block title %}
 <title>Home Page</title>
@@ -61,7 +69,7 @@
       </div>
     </form>
     {% for todo in todos %}
-    <div>
+    <div id="todoContainer">
       <p>{{todo.todo}}</p>
       <a href="/delete/{{todo._id}}">
         <img
