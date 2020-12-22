@@ -62,14 +62,14 @@
     </form>
     {% for todo in todos %}
     <div>
-      <p>{{todo}}</p>
-      <button>
+      <p>{{todo.todo}}</p>
+      <a href="/delete/{{todo._id}}">
         <img
           src="{{ url_for('static',filename='images/remove.png') }}"
           width="30rem"
           height="30rem"
         />
-      </button>
+      </a>
     </div>
     {% endfor %}
   </div>

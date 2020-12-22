@@ -22,18 +22,25 @@ def home():
     todoFromDB = db.session.query(todos).all()
     todosList = []
     for todo in todoFromDB:
-        todosList.append(todo.todo)
+        todosList.append(todo)
     return render_template("home.html", todos=todosList)
 
 
 @app.route("/add", methods=["POST"])
 def addTodo():
     todo = request.form["todo"]
-    print(f"------------------------\n{todo}\n------------")
     if len(todo) > 1:
         todoOB = todos(todo)
         db.session.add(todoOB)
         db.session.commit()
+    return redirect(url_for("home"))
+
+
+@app.route("/delete/<id>")
+def deleteTodo(id):
+    todo = db.session.query(todos).filter_by(_id=id).first()
+    db.session.delete(todo)
+    db.session.commit()
     return redirect(url_for("home"))
 
 
